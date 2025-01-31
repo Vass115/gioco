@@ -1,5 +1,6 @@
 /// @description Inserisci qui la descrizione
 //Puoi scrivere il tuo codice in questo editor
+
 global.upgrade_count = 5;  // Numero totale di potenziamenti
 global.upgrades = array_create(global.upgrade_count, 0);  // Livelli attuali dei potenziamenti
 global.costs = array_create(global.upgrade_count, 1);     // Costo iniziale di ogni potenziamento
@@ -74,7 +75,8 @@ function acquista_potenziamento(index) {
         if (global.coins >= global.costs[index]) {      // Se ha abbastanza monete
             global.coins -= global.costs[index];        // Sottrai il costo delle monete
             global.upgrades[index] += 1;                // Aumenta il livello del potenziamento
-            global.costs[index] *= 2;                   // Raddoppia il costo per il prossimo livello
+            global.costs[index] = global.costs[index] * 2;                   // Raddoppia il costo per il prossimo livello
+            //global.costs[index] *= 2;                   // Raddoppia il costo per il prossimo livello
 
             salva_dati();  // Salva i progressi
         } else {
