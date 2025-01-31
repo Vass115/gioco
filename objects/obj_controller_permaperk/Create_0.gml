@@ -14,17 +14,24 @@ global.Extrahp = 0
 
 
 function carica_dati() {
+	
     if (file_exists("savefile.ini")) {  // Verifica se il file esiste
         ini_open("savefile.ini");  
         global.coins = ini_read_real("GameData", "Coins", 0);  // Carica le monete (default: 0)
         for (var i = 0; i < global.upgrade_count; i++) {
             global.upgrades[i] = ini_read_real("GameData", "Upgrade_" + string(i), 0);  // Carica i livelli
             global.costs[i] = ini_read_real("GameData", "Cost_" + string(i), 1);       // Carica i costi
+			 // Impostare il costo iniziale a 100 se non è stato letto correttamente
+        if (global.costs[i] == 1) {
+            global.costs[i] = 100;  // Imposta il costo iniziale su 100 invece di 1
+        }
 			  global.vel = ini_read_real("Dati", "Vel", 0);
 			  global.atk = ini_read_real("Dati", "Atk", 0);
 			  global.range = ini_read_real("Dati", "Range", 0);
 			  global.atkspd = ini_read_real("Dati", "AtkSpd", 0);
 			  global.Extrahp = ini_read_real("Dati", "Extrahp", 0);
+			  
+			  
 		}
         ini_close();
     }

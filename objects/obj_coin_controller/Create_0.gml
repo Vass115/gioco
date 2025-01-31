@@ -24,6 +24,9 @@ function carica_dati() {
         for (var i = 0; i < global.upgrade_count; i++) {
             global.upgrades[i] = ini_read_real("GameData", "Upgrade_" + string(i), 0);  // Carica i livelli
             global.costs[i] = ini_read_real("GameData", "Cost_" + string(i), 1);       // Carica i costi
+			 if (global.costs[i] == 1) {
+            global.costs[i] = 100;  // Imposta il costo iniziale su 100 invece di 1
+        }
 			  global.vel = ini_read_real("Dati", "Vel", 0);
 			  global.atk = ini_read_real("Dati", "Atk", 0);
 			  global.range = ini_read_real("Dati", "Range", 0);
