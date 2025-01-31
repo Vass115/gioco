@@ -78,8 +78,9 @@ function acquista_potenziamento(index) {
         if (global.coins >= global.costs[index]) {      // Se ha abbastanza monete
             global.coins -= global.costs[index];        // Sottrai il costo delle monete
             global.upgrades[index] += 1;                // Aumenta il livello del potenziamento
-            global.costs[index] *= 2;                   // Raddoppia il costo per il prossimo livello
-
+            global.costs[index] = global.costs[index] * 2;                   // Raddoppia il costo per il prossimo livello
+			//global.costs[index] *= 2;   
+			
             salva_dati();  // Salva i progressi
         } else {
             show_message("You don't have enough coins!!");
